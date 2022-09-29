@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Routes,
   Route,
   Link
@@ -9,14 +9,15 @@ import axios from 'axios'
 
 import './App.css';
 import CharacterDetails from './components/characterDetails';
+import PageWrapper from './components/pagewrapper';
+import Home from './components/Pages/home'
+import CharacterList from './components/Pages/characterList'
+import { characters as StaticCharacters } from './character.ts';
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [seeDetails, setSeeDetails] = useState(false)
-
-  useEffect(()=> {
-    getCharacters()
-  })
+  let activeCharacter;
 
   const toggleDetails = () => {
     if(seeDetails){
@@ -26,6 +27,12 @@ function App() {
     }
   }
 
+  ///get characters from From API
+  /*
+  useEffect(()=> {
+    getCharacters()
+  },[])
+
   const getCharacters = async() => {
     await axios
     .get('https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us67.gitpod.io/characters/')
@@ -33,23 +40,24 @@ function App() {
     //.then(res => console.log(res.data))
     .then(res => setCharacters(res.data))
   }
+  */
 
-  const listCharacters = () => {
-    return characters.map(character => {
-        return (
-          <div>
-            <li key={character.id}>{character.name}<span className='dropdown'><button onClick={() => {toggleDetails()} }>v</button></span></li>
-            {seeDetails ? <CharacterDetails character={character} /> : "" }
-          </div>
-        )
-      })
-    }
+  ////From File
+  useEffect(() => {
+    setCharacters(StaticCharacters)
+  },[])
+   
 
   return (
-    <div>
-      <h1>Character List</h1>
-      <ul>{listCharacters()}</ul>
-    </div>
+    <Router>
+      <PageWrapper>
+        <Routes>
+          <Route path='/' element={<Home />} exact={true}/>
+          <Route path='/characters' element={<CharacterList characters={characters} activeCharacter={activeCharacter}/>} />
+          <Route path='/characters/:id' element={<CharacterDetails character={activeCharacter}/>} />
+        </Routes>
+      </PageWrapper>
+    </Router>
   );
 }
 
