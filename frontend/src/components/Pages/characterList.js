@@ -1,20 +1,12 @@
-import CharacterDetails from '../characterDetails';
-import { characters as StaticCharacters} from '../../character.ts';
 import { Link } from 'react-router-dom';
 
-const CharacterList = ({characters, activeCharacter}) => {
+const CharacterList = ({characters}) => {
     //map through list of characters and create list
-    
-    const setActiveCharacter = (e)=>{
-      activeCharacter = e.target.value
-    }
 
      const listCharacters = () => {
       return characters.map(character => {
           return (
-            <div>
-              <li key={character.id} onClick={setActiveCharacter}><Link to='/character/:id'>{character.name}</Link></li>
-            </div>
+              <li key={character.id} ><Link to={`/characters/${character.id}`}>{character.name}</Link></li>
           )
         })
       }

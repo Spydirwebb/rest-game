@@ -12,7 +12,7 @@ import CharacterDetails from './components/characterDetails';
 import PageWrapper from './components/pagewrapper';
 import Home from './components/Pages/home'
 import CharacterList from './components/Pages/characterList'
-import { characters as StaticCharacters } from './character.ts';
+import StaticCharacters from './characterData';
 
 function App() {
   const [characters, setCharacters] = useState([])
@@ -54,7 +54,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} exact={true}/>
           <Route path='/characters' element={<CharacterList characters={characters} activeCharacter={activeCharacter}/>} />
-          <Route path='/characters/:id' element={<CharacterDetails character={activeCharacter}/>} />
+          <Route path='/characters/:characterId' element={<CharacterDetails />} />
         </Routes>
       </PageWrapper>
     </Router>

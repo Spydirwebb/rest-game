@@ -1,4 +1,4 @@
-export const characters =[
+export default [
     {
         id: 1,
         name : "John",
