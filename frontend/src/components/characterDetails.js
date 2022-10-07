@@ -1,11 +1,24 @@
-import React from "react"
+import {useState, useEffect} from "react"
 import { useParams } from "react-router"
 import styled from 'styled-components'
+import axios from 'axios'
 import characters from '../characterData'
 
-const CharacterDetails = ({character}) => {
+const CharacterDetails = () => {
     let {characterId} = useParams()
-    const thisCharacter = characters.find(char => char.id === +characterId)
+    const [thisCharacter, setThisCharacter] = useState({})
+    //const thisCharacter = characters.find(char => char.id === +characterId)
+    useEffect(()=> {
+        getCharacter()
+      },[])
+    
+      const getCharacter = async() => {
+        await axios
+        .get(`https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us70.gitpod.io/characters/${characterId}`)
+        //.then(res => console.log(res))
+        //.then(res => console.log(res.data))
+        .then(res => setThisCharacter(res.data))
+      }
 
     return (
         <StyledCharacterDetails>

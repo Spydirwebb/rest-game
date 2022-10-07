@@ -1,8 +1,24 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const CharacterList = ({characters}) => {
-    //map through list of characters and create list
+const CharacterList = () => {
+  const [characters, setCharacters] = useState([])
+  
+  useEffect(()=> {
+    getCharacters()
+  },[])
 
+  const getCharacters = async() => {
+    await axios
+    .get('https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us70.gitpod.io/characters')
+    //.then(res => console.log(res))
+    //.then(res => console.log(res.data))
+    .then(res => setCharacters(res.data))
+  }
+
+  //map through list of characters and create list
+    
      const listCharacters = () => {
       return characters.map(character => {
           return (
