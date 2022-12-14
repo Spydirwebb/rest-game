@@ -14,7 +14,7 @@ const CharacterDetails = () => {
     
       const getCharacter = async() => {
         await axios
-        .get(`https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us70.gitpod.io/characters/${characterId}`)
+        .get(`https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us78.gitpod.io/characters/${characterId}`)
         //.then(res => console.log(res))
         //.then(res => console.log(res.data))
         .then(res => setThisCharacter(res.data))

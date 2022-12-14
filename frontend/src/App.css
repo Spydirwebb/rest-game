@@ -41,3 +41,18 @@
   color:grey;
   margin-left: 1rem;
 }
+
+nav {
+  width:100%;
+  background-color:grey;
+  height: 1.5rem;
+  padding: 1rem;
+}
+.nav-link {
+  margin: 1.5rem;
+  font-weight: bold;
+}
+
+.page-details{
+  margin-left: 2rem;
+}

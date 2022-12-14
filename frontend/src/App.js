@@ -5,13 +5,13 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import axios from 'axios'
 
 import './App.css';
 import CharacterDetails from './components/characterDetails';
 import PageWrapper from './components/pagewrapper';
 import Home from './components/Pages/home'
 import CharacterList from './components/Pages/characterList'
+import LoginPage from './components/Pages/loginPage';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
           <Route path='/' element={<Home />} exact={true}/>
           <Route path='/characters' element={<CharacterList />} />
           <Route path='/characters/:characterId' element={<CharacterDetails />} />
+          <Route path='/login' element={<LoginPage />} />
         </Routes>
       </PageWrapper>
     </Router>
