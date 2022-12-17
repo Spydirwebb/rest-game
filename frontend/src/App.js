@@ -12,6 +12,8 @@ import PageWrapper from './components/pagewrapper';
 import Home from './components/Pages/home'
 import CharacterList from './components/Pages/characterList'
 import LoginPage from './components/Pages/loginPage';
+import CreateACharacter from './components/Pages/CreateACharacter';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path='/characters' element={<CharacterList />} />
           <Route path='/characters/:characterId' element={<CharacterDetails />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/characters/create-a-character' element={<CreateACharacter />} />
         </Routes>
       </PageWrapper>
     </Router>

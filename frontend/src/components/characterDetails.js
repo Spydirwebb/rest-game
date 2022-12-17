@@ -2,21 +2,19 @@ import {useState, useEffect} from "react"
 import { useParams } from "react-router"
 import styled from 'styled-components'
 import axios from 'axios'
-import characters from '../characterData'
 
 const CharacterDetails = () => {
     let {characterId} = useParams()
     const [thisCharacter, setThisCharacter] = useState({})
-    //const thisCharacter = characters.find(char => char.id === +characterId)
+
+
     useEffect(()=> {
         getCharacter()
       },[])
     
       const getCharacter = async() => {
         await axios
-        .get(`https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us78.gitpod.io/characters/${characterId}`)
-        //.then(res => console.log(res))
-        //.then(res => console.log(res.data))
+        .get(`${process.env.REACT_APP_DB_CHARACTERS}${characterId}`)
         .then(res => setThisCharacter(res.data))
       }
 
@@ -32,6 +30,7 @@ const CharacterDetails = () => {
                 <h2 className="character-defense">Defense: {thisCharacter.defense}</h2>
                 <h2 className="character-exp">Experience: {thisCharacter.currentExp}/<span className="character-maxValue">{thisCharacter.nextLevelExp}</span></h2>
             </section>
+            <p className="delete">DELETE THIS CHARACTER</p>
         </StyledCharacterDetails>
     )
 }
@@ -52,6 +51,14 @@ const StyledCharacterDetails = styled.div`
 .character-details {
     width: 50%;
     margin-left: 50%;
+}
+
+.delete {
+    font-size: .7rem;
+    color: red;
+    font-weight: bold;
+    border: 3px solid red;
+    width: fit-content;
 }
     
 `
