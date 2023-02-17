@@ -39,10 +39,10 @@ const Navbar = () => {
     					    </List>
     				    </div>
     				  </Drawer>
-    			    <Typography variant='h6' className='title'>
+    			    <Typography variant='h6' className='title' sx={{flexGrow: 1}}>
     				  Welcome User
     			    </Typography>
-              <Button className={styles.button} color="inherit">Login</Button>
+              <Button sx={{mr: 0}} className={styles.button} color="inherit">Login</Button>
     		    </Toolbar>
     	    </AppBar>
         </Box>
