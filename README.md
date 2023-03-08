@@ -11,3 +11,4 @@ The game from loopback but made with django-rest and react instead
 12/21 - added a delete modal (need to style). Delete works on the second click. Not sure why
 02/14 - converting frontend to Next. Navbar created
 02/16 - next - home screen recreated. working on character list screen
+03/07 - character slug page is created, but needs styled
