@@ -127,8 +127,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
-
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-spydirwebb-restgame-9ccxoscwimp.ws-us70.gitpod.io',
+    'https://*.gitpod.io',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True

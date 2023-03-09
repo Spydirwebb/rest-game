@@ -1,26 +1,15 @@
 import Layout from "@/components/Layout";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import axios from 'axios'
+import Link from 'next/link'
 
 
-
-const Character = () => {
-    const character = {
-        id: 1,
-        name : "John",
-        level : 1,
-        nextLevelExp : 100,
-        currentExp : 0,
-        maxHealth : 10,
-        currentHealth : 10,
-        maxMana : 10,
-        currentMana : 10, 
-        attack : 10,
-        defense : 0,
-    }
+const Character = ({character}) => {
     
     return (
         <Layout>
+            <Link href="/characters">Back to characters</Link>
             <Grid container>
                 <Grid item xs={12} md={6}>
                     <Typography variant='h3'>{character.name}</Typography>
@@ -44,5 +33,16 @@ const Character = () => {
         </Layout>
     )
 }
+
+export async function getServerSideProps({query: {slug}}) {
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_DB_BASE_URL}/characters/${slug}`)
+  
+    console.log(data)
+    return {
+      props: {
+        character: data
+      }
+    }
+  }
 
 export default Character
