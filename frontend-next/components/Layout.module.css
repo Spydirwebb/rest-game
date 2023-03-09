@@ -1,3 +1,6 @@
 .container {
     height: auto;
 }
+.children{
+    margin-left: 1rem;
+}

@@ -13,3 +13,4 @@ The game from loopback but made with django-rest and react instead
 02/16 - next - home screen recreated. working on character list screen
 03/07 - character slug page is created, but needs styled
 03/08 - character list and slug pages get requests working
+03/09 - create a character working
